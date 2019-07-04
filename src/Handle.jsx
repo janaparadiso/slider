@@ -62,7 +62,8 @@ export default class Handle extends React.Component {
 
   render() {
     const {
-      prefixCls, vertical, offset, style, disabled, min, max, value, tabIndex, ...restProps
+      prefixCls, vertical, offset, style, disabled, min, max, value,
+      tabIndex, ariaValueMin, ariaValueMax, ariaValueNow, ...restProps
     } = this.props;
 
     const className = classNames(
@@ -96,9 +97,9 @@ export default class Handle extends React.Component {
 
         // aria attribute
         role="slider"
-        aria-valuemin={min}
-        aria-valuemax={max}
-        aria-valuenow={value}
+        aria-valuemin={ariaValueMin || min}
+        aria-valuemax={ariaValueMax || max}
+        aria-valuenow={ariaValueNow || value}
         aria-disabled={!!disabled}
       />
     );
@@ -114,6 +115,9 @@ Handle.propTypes = {
   disabled: PropTypes.bool,
   min: PropTypes.number,
   max: PropTypes.number,
+  ariaValueMin: PropTypes.number,
+  ariaValueMax: PropTypes.number,
+  ariaValueNow: PropTypes.number,
   value: PropTypes.number,
   tabIndex: PropTypes.number,
 };

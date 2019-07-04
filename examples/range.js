@@ -165,7 +165,7 @@ ReactDOM.render(
     </div>
     <div style={style}>
       <p>Basic Range，`step=20` </p>
-      <Range step={20} defaultValue={[20, 20]} onBeforeChange={log} />
+      <Range ariaValueMin={300} step={20} defaultValue={[20, 20]} onBeforeChange={log} />
     </div>
     <div style={style}>
       <p>Basic Range，`step=20, dots` </p>
