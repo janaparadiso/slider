@@ -15,9 +15,7 @@ class Slider extends React.Component {
     tabIndex: PropTypes.number,
     min: PropTypes.number,
     max: PropTypes.number,
-    ariaValueMin: PropTypes.number,
-    ariaValueMax: PropTypes.number,
-    ariaValueNow: PropTypes.number,
+    formatAriaNow: PropTypes.func,
   };
 
   constructor(props) {
@@ -157,9 +155,7 @@ class Slider extends React.Component {
       tabIndex,
       min,
       max,
-      ariaValueMin,
-      ariaValueMax,
-      ariaValueNow,
+      formatAriaNow,
       handle: handleGenerator,
     } = this.props;
     const { value, dragging } = this.state;
@@ -174,9 +170,7 @@ class Slider extends React.Component {
       disabled,
       min,
       max,
-      ariaValueMin,
-      ariaValueMax,
-      ariaValueNow,
+      formatAriaNow,
       index: 0,
       tabIndex,
       style: handleStyle[0] || handleStyle,

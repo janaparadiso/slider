@@ -23,9 +23,7 @@ class Range extends React.Component {
     tabIndex: PropTypes.arrayOf(PropTypes.number),
     min: PropTypes.number,
     max: PropTypes.number,
-    ariaValueMin: PropTypes.number,
-    ariaValueMax: PropTypes.number,
-    ariaValueNow: PropTypes.number,
+    formatAriaNow: PropTypes.func,
   };
 
   static defaultProps = {
@@ -360,9 +358,7 @@ class Range extends React.Component {
       trackStyle,
       handleStyle,
       tabIndex,
-      ariaValueMin,
-      ariaValueMax,
-      ariaValueNow,
+      formatAriaNow,
     } = this.props;
 
     const offsets = bounds.map(v => this.calcOffset(v));
@@ -388,9 +384,7 @@ class Range extends React.Component {
         min,
         max,
         disabled,
-        ariaValueMin,
-        ariaValueMax,
-        ariaValueNow,
+        formatAriaNow,
         style: handleStyle[i],
         ref: h => this.saveHandle(i, h),
       })

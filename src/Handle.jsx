@@ -60,6 +60,11 @@ export default class Handle extends React.Component {
     this.handle.blur();
   }
 
+  handleAriaValueNow = () => {
+    const { formatAriaNow, value } = this.props;
+    return formatAriaNow ? formatAriaNow(value) : value;
+  }
+
   render() {
     const {
       prefixCls, vertical, offset, style, disabled, min, max, value,
@@ -97,9 +102,10 @@ export default class Handle extends React.Component {
 
         // aria attribute
         role="slider"
-        aria-valuemin={ariaValueMin || min}
-        aria-valuemax={ariaValueMax || max}
-        aria-valuenow={ariaValueNow || value}
+
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={this.handleAriaValueNow()}
         aria-disabled={!!disabled}
       />
     );
@@ -115,9 +121,7 @@ Handle.propTypes = {
   disabled: PropTypes.bool,
   min: PropTypes.number,
   max: PropTypes.number,
-  ariaValueMin: PropTypes.number,
-  ariaValueMax: PropTypes.number,
-  ariaValueNow: PropTypes.number,
+  formatAriaNow: PropTypes.func,
   value: PropTypes.number,
   tabIndex: PropTypes.number,
 };
